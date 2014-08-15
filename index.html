@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="nameApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>XplusZ</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top" class="index">
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">LOGO HERE</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a class="active-nav" href="#portfolio">Home</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Service</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Products</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-lg-offset-1">
+                <h1 class="hidden-xs">Marvelous!</h1>
+                <h2 class="visible-xs">Marvelous!</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="spacing-100 hidden-xs"></div>
+                <button type="button" class="plus-btn pull-right"><span class="plus-btn-txt">Take Action Now!</span><br/> <span class="plus-btn-txtt">REGISTER</span></button>
+            </div>
+
+            <div ng-controller="NameCtrl" class="col-lg-offset-1 col-lg-10 col-md-12 col-xs-12">
+
+                <div class="spacing-50"></div>
+
+                <div class="center-block add-item">Add an Item</div>
+
+                <div class="col-lg-4 no-padding">
+                    <form ng-submit="addName()">
+                        <input type="text" class="input-form" ng-model="enteredName" placeholder="Enter Item">
+                        <div class="spacing-20"></div>
+
+                        <select class="column-style" ng-model="selectedColumn">
+                            <option value="firstColumn"  placeholder="Choose Column">First Column</option>
+                            <option value="secondColumn">Second Column</option>
+                        </select>
+
+                        <input class="add-item-btn" type="submit" value="add item">
+                    </form>
+
+                    <div class="spacing-20 hidden-xs"></div>
+
+
+                    <p class="search-text-small">Search an Item</p>
+                    <form ng-submit="addName()">
+                        <input type="text" class="input-form-search" ng-model="searchText" placeholder="Search">
+                    </form>
+                </div>
+
+                <div class="col-lg-4 no-padding column-bg">
+                    <div class="text-center column-header">Column 1</div>
+                    <ul class="zebra">
+                        <li class="column-row" ng-repeat="name in firstColumn | filter:searchText">{{ name }}
+                            <a href="" class="remove-btn" ng-click="removeName(name, 'firstColumn')"><span class="glyphicon glyphicon-remove"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 no-padding column-bg">
+                    <div class="text-center column-header">Column 2</div>
+                    <ul class="zebra">
+                        <li class="column-row" ng-repeat="name in secondColumn | filter:searchText">{{ name }}
+                            <a href="" class="remove-btn" ng-click="removeName(name, 'secondColumn')"><span class="glyphicon glyphicon-remove"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="section-bottom">
+        <div class="container">
+            <div class="col-lg-4 col-lg-offset-1">
+                <div class="info-badge center-block">Did you know</div>
+                <div class="spacing-20"></div>
+                <p class="text-center color-dark">Lorem Ipsum is simply<br/> dummy text of the printing<br/> and typesetting industry.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-box hidden-xs">Lorem Ipsum is simply dummy text of the printing.</div>
+                <div class="text-box-sm visible-xs">Lorem Ipsum is simply dummy text of the printing.</div>
+                <img class="img-responsive img-border" src="img/botimage.png">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="col-lg-4 col-lg-offset-1">
+                <div class="navbar-brand-footer">&copy; Copyright 2014</div>
+            </div>
+            <div class="col-lg-6">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right text-uppercase">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a class="active-nav" href="#portfolio">Home</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Service</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Products</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+
+
+
+</body>
+
+</html>
